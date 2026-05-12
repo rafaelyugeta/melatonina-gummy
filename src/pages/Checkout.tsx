@@ -6,7 +6,7 @@ import kitImg1 from "@/assets/kit-1.jpg";
 import kitImg2 from "@/assets/kit-2.jpg";
 import kitImg3 from "@/assets/kit-3.jpg";
 
-const API_URL = "/api/create-pix-charge";
+const API_URL = "/.netlify/functions/create-pix-charge";
 
 const kitMap: Record<string, { title: string; price: number; originalPrice: number; image: string; productId: string; quantity: number }> = {
   "1": { title: "1 Melatonina Gummy", price: 39.90, originalPrice: 54.90, image: kitImg1, productId: "a1c370be-672a-4744-a169-26d2a0709b5b", quantity: 1 },
