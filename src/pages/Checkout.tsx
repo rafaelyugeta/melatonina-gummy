@@ -143,6 +143,29 @@ const Checkout = () => {
             phone: form.celular.replace(/\D/g, ""),
             name: form.nome,
           });
+          // Enviar venda para UTMify via server-side
+          const utm = captureUtms();
+          fetch(API_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              action: "utmify",
+              orderId: pixData.orderId,
+              value: kit.price,
+              customer: {
+                name: form.nome.trim(),
+                email: form.email.trim(),
+                phone: form.celular.replace(/\D/g, ""),
+                cpf: form.cpf.replace(/\D/g, ""),
+              },
+              utm,
+              product: {
+                name: kit.title,
+                plan: kit.title,
+                quantity: kit.quantity,
+              },
+            }),
+          }).catch(() => {});
           setStep("paid");
           clearInterval(poll);
         }
