@@ -13,12 +13,12 @@ export const captureUtms = (): UtmParams => {
   });
   if (Object.keys(fromUrl).length > 0) {
     try {
-      sessionStorage.setItem(STORAGE_KEY, JSON.stringify(fromUrl));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(fromUrl));
     } catch {}
     return fromUrl;
   }
   try {
-    const stored = sessionStorage.getItem(STORAGE_KEY);
+    const stored = localStorage.getItem(STORAGE_KEY);
     if (stored) return JSON.parse(stored) as UtmParams;
   } catch {}
   return {};

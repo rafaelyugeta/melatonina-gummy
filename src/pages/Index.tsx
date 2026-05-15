@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import TopBar from "@/components/sales/TopBar";
 import HeroProduct from "@/components/sales/HeroProduct";
 import TrustBadges from "@/components/sales/TrustBadges";
@@ -12,8 +13,13 @@ import FAQ from "@/components/sales/FAQ";
 import FinalCTA from "@/components/sales/FinalCTA";
 import Footer from "@/components/sales/Footer";
 import StickyCart from "@/components/sales/StickyCart";
+import { captureUtms } from "@/lib/utmify";
 
-const Index = () => (
+const Index = () => {
+  // Capturar UTMs assim que o usuário chega na landing page
+  useEffect(() => { captureUtms(); }, []);
+
+  return (
   <div className="min-h-screen bg-background max-w-[768px] mx-auto">
     <TopBar />
     <HeroProduct />
@@ -30,6 +36,7 @@ const Index = () => (
     <Footer />
     <StickyCart />
   </div>
-);
+  );
+};
 
 export default Index;
